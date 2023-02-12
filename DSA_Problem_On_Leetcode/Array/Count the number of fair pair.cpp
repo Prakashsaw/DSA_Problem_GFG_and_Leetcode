@@ -2,6 +2,7 @@
 Q_Id:- 2563.
 Q_Name:- Count the Number of Fair Pairs;
 Platform:- Leetcode.
+Difficulty:- Medium
 Quetion Description:-
 Given a 0-indexed integer array nums of size n and two integers lower and upper, return the number of fair pairs.
 
