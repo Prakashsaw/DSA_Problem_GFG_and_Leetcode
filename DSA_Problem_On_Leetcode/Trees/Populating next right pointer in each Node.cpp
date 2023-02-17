@@ -105,12 +105,37 @@ public:
         // return root;
 
 
-        //Third approach
-        //recursive approach
+        // //Third approach
+        // //recursive approach
+        // //TC = O(N)
+        // //SC = O(1) if not considered recursive call stack
+        // if(root == NULL) return NULL;
+        // solve(root->left, root->right);
+        // return root;
+
+        //fourth appraoch
+        //Optimized approach
         //TC = O(N)
-        //SC = O(1) if not considered recursive call stack
-        if(root == NULL) return NULL;
-        solve(root->left, root->right);
+        //SC = O(1)
+
+        Node* head = root;
+        while(head != NULL) {
+            Node* dummy = new Node(0);
+            Node* temp = dummy;
+            while(head != NULL) {
+                if(head->left != NULL) {
+                    temp->next = head->left;
+                    temp = temp->next;
+                }
+                if(head->right != NULL) {
+                    temp->next = head->right;
+                    temp = temp->next;
+                }
+                head = head->next;
+            }
+            head = dummy->next;
+        }     
         return root;
+
     }
 };
