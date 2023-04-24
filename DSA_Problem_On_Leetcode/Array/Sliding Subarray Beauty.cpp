@@ -53,43 +53,76 @@ n == nums.length
 class Solution {
 public:
     vector<int> getSubarrayBeauty(vector<int>& nums, int k, int x) {
+        // int n = nums.size();
+        // int i = 0;
+        // int j = 0;
+        
+        // vector<int> ans;
+        // map<int, int> mp;
+        
+        // while(j < n) {
+        //     if(nums[j] < 0) {
+        //             mp[nums[j]]++;
+        //     }
+            
+        //     if(j-i+1 < k) {
+        //         j++;
+        //     } else {
+        //         bool include = false;
+        //         int cnt = 0;
+        //         for(auto t : mp) {
+                    
+        //             cnt += t.second;
+                    
+        //             if(cnt >= x) {
+        //                 include = true;
+        //                 ans.push_back(t.first);
+        //                 break;
+        //             }
+        //         }
+                
+        //         if(include == false) {
+        //             ans.push_back(0);
+        //         }
+                
+        //         if(mp.find(nums[i]) != mp.end()) {
+        //             mp[nums[i]]--;
+        //             if(mp[nums[i]] == 0) {
+        //                 mp.erase(nums[i]);
+        //             }
+        //         }
+        //         i++;
+        //         j++;
+        //     }
+        // }
+        // return ans;
+
+
         int n = nums.size();
         int i = 0;
         int j = 0;
         
+        multiset<int> st;
         vector<int> ans;
-        map<int, int> mp;
         
         while(j < n) {
             if(nums[j] < 0) {
-                    mp[nums[j]]++;
+                    st.insert(nums[j]);
             }
             
             if(j-i+1 < k) {
                 j++;
             } else {
-                bool include = false;
-                int cnt = 0;
-                for(auto t : mp) {
-                    
-                    cnt += t.second;
-                    
-                    if(cnt >= x) {
-                        include = true;
-                        ans.push_back(t.first);
-                        break;
-                    }
-                }
-                
-                if(include == false) {
+                if(st.size() < x) {
                     ans.push_back(0);
+                } else {
+                    //TC of next() is O(logk)
+                    ans.push_back(*next(st.begin(), x-1));
                 }
-                
-                if(mp.find(nums[i]) != mp.end()) {
-                    mp[nums[i]]--;
-                    if(mp[nums[i]] == 0) {
-                        mp.erase(nums[i]);
-                    }
+
+                if(st.find(nums[i]) != st.end()) {
+                    auto it = st.find(nums[i]);
+                    st.erase(it);
                 }
                 i++;
                 j++;
