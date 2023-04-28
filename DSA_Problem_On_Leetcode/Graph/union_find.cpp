@@ -1,4 +1,6 @@
-
+//union and find code/implementation:- Disjoint set
+vector<int> parent;
+vector<int> rank;
 
 int find(int i, vector<int> &parent) {
     if(i == parent[i]) {
