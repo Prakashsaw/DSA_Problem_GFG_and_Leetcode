@@ -1,5 +1,6 @@
 ## My Personal DSA reppository for keeping all practice problem with solution which I solved
-A Repository for DSA question doing by me on platform like GFG and Leetcode.
+* A Repository for DSA question doing by me on platform like GFG and Leetcode.
+* Language used:- C and C++.
 
 ### Coding Platforms
 1. Leetcode. My profile:- https://leetcode.com/prakash8873/
